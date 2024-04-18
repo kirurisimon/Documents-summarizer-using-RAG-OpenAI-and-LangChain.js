@@ -12,8 +12,8 @@ function App() {
     e.preventDefault();
     try {
       const response = await axios.post('http://localhost:30080/ask', {
-        question,
-        selectedFiles,
+        question: question || 'summarize',
+        selectedFiles: selectedFiles,
       });
       setResult(response.data.kwargs.content);
     } catch (error) {
@@ -64,13 +64,13 @@ function App() {
           <form className="question-form" onSubmit={handleSubmit}>
             <input
               type="text"
-              placeholder="Enter your question"
+              placeholder="Enter your instructions or click submit for a general summary"
               value={question}
               onChange={(e) => setQuestion(e.target.value)}
               className="question-input"
             />
             <button type="submit" className="submit-button">
-              Ask
+              Submit
             </button>
           </form>
           {result && (
