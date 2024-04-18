@@ -80,7 +80,7 @@ function createRephraseQuestionChain() {
 
   const rephraseQuestionChainPrompt = ChatPromptTemplate.fromMessages([
     ["system", REPHRASE_QUESTION_SYSTEM_TEMPLATE],
-    ["human", "Rephrase the following question as a standalone question:\n{question}"],
+    ["human", "Rephrase the following question or instruction to be standalone:\n{question}"],
   ]);
 
   const rephraseQuestionChain = RunnableSequence.from([
